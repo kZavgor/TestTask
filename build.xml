@@ -1,0 +1,55 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<project name="TestNGTest" default="TestTask" basedir=".">
+
+    <taskdef name="testng" classname="org.testng.TestNGAntTask">
+        <classpath>
+            <pathelement location="lib/testng-6.8.jar"/>
+        </classpath>
+    </taskdef>
+
+    <property name="srcdir" location="src"/>
+    <property name="reportdir" location="reports"/>
+    <property name="outdir" location="out"/>
+    <property name="libdir" location="lib" />
+    <property name="configdir" location="config"/>
+    <property name="testdir" location="${srcdir}/testTask/tests"/>
+    <property name="full-compile" value="true" />
+
+    <path id="classpath.base"/>
+    <path id="classpath.test">
+
+        <fileset dir="${libdir}">
+            <include name="**/*.jar" />
+        </fileset>
+
+        <pathelement location="${testdir}" />
+        <pathelement location="${srcdir}" />
+
+        <path refid="classpath.base" />
+    </path>
+
+    <target name="clean" >
+        <delete verbose="${full-compile}">
+            <fileset dir="${outdir}" includes="**/*.class" />
+        </delete>
+    </target>
+
+    <target name="compile" depends="clean">
+        <javac srcdir="${srcdir}" destdir="${outdir}" verbose="${full-compile}">
+            <classpath refid="classpath.test"/>
+        </javac>
+    </target>
+
+    <target name="TestTask" depends="compile">
+
+        <testng outputdir="${reportdir}"
+                classpathref="classpath.test"
+                useDefaultListeners="false"
+                listeners="org.uncommons.reportng.HTMLReporter">
+
+
+            <xmlfileset dir="${configdir}/testng" includes="MainSuit.xml"/>
+        </testng>
+    </target>
+
+</project>
