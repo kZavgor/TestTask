@@ -9,10 +9,9 @@
 
     <property name="srcdir" location="src"/>
     <property name="reportdir" location="reports"/>
-    <property name="outdir" location="out"/>
+    <property name="testdir" location="out"/>
     <property name="libdir" location="lib" />
     <property name="configdir" location="config"/>
-    <property name="testdir" location="${srcdir}/testTask/tests"/>
     <property name="full-compile" value="true" />
 
     <path id="classpath.base"/>
@@ -30,12 +29,12 @@
 
     <target name="clean" >
         <delete verbose="${full-compile}">
-            <fileset dir="${outdir}" includes="**/*.class" />
+            <fileset dir="${testdir}" includes="**/*.class" />
         </delete>
     </target>
 
     <target name="compile" depends="clean">
-        <javac srcdir="${srcdir}" destdir="${outdir}" verbose="${full-compile}">
+        <javac srcdir="${srcdir}" destdir="${testdir}" verbose="${full-compile}">
             <classpath refid="classpath.test"/>
         </javac>
     </target>
