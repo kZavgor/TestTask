@@ -1,0 +1,23 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<Elements>
+
+    <WebElement name="userNavDropdownHeader" type="css">a[title$="gmail.com"]</WebElement>
+    <WebElement name="writeLetterButton" type="xpath">//div[div/div/span[text()="Gmail"]]//div[@role="button" and not(@id)]</WebElement>
+
+    <!--Write letter frame-->
+    <WebElement name="writeLetterFrame" type="css">div[role="dialog"]</WebElement>
+    <WebElement name="encloseFileButton" type="css">div[role="dialog"] div[command="Files"]</WebElement>
+
+    <!--File oversize error popup-->
+    <WebElement name="fileOverSizeErrorPopup" type="css">div[role="alertdialog"]</WebElement>
+    <WebElement name="useGoogleDriveButton" type="css">div[role="alertdialog"] button[name="docs"]</WebElement>
+    <WebElement name="declineFileUploadingButton" type="css">div[role="alertdialog"] button[name="docs"]</WebElement>
+
+    <!--Add link popup-->
+    <WebElement name="linkTextInput" type="id">linkdialog-text</WebElement>
+    <WebElement name="linkToURLRadio" type="id">linkdialog-buttons</WebElement>
+    <WebElement name="linkURLInput" type="id">linkdialog-onweb-tab-input</WebElement>
+    <WebElement name="submitAddLinkButton" type="css">button[name="ok"]</WebElement>
+    <WebElement name="addedLink" type="id">tr_test-link</WebElement>
+
+</Elements>

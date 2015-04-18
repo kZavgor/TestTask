@@ -3,18 +3,19 @@ package testTask.tests;
 
 import org.junit.Assert;
 import org.testng.annotations.Test;
-import testTask.util.WebElementsParcer;
+import testTask.base.BaseTest;
+import testTask.controls.Pages;
 
-public class Test_test{
+public class Test_test extends BaseTest{
 
     @Test
     public void test1(){
 
-        Assert.assertFalse(false);
+        Pages.loginPage().openPage();
     }
 
     @Test(dependsOnMethods = "test1")
     public void test2(){
-        Assert.assertTrue(false);
+        Assert.assertTrue(true);
     }
 }

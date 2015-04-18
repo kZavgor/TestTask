@@ -1,9 +1,14 @@
 <?xml version="1.0" encoding="UTF-8"?>
-
 <Elements>
 
-    <WebElement name="loginButton" type="xpath">
-        //span[text() = 'Войти']
-    </WebElement>
+    <WebElement name="logo" type="css">img.logo</WebElement>
+    <WebElement name="emailInput" type="id">Email</WebElement>
+    <WebElement name="passwordInput" type="id">Passwd</WebElement>
+    <WebElement name="signInButton" type="id">signIn</WebElement>
+    <WebElement name="languageSelector" type="id">lang-chooser</WebElement>
+
+    <!--Account recovery area-->
+    <WebElement name="accountRecoveryLabel" type="css">.edit-account-recovery-prompt</WebElement>
+    <WebElement name="declineRecoveryPassword" type="id">cancel</WebElement>
 
 </Elements>
