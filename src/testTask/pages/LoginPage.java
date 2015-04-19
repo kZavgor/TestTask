@@ -11,4 +11,19 @@ public class LoginPage extends BasePage{
         waitForElementVisibility("logo");
     }
 
+    public void typeEmail(String email){
+        type(email, "emailInput");
+    }
+
+    public void typePassword(String password){
+        type(password, "passwordInput");
+    }
+
+    public void clickSignInButton() {
+        click("signInButton");
+        if(isElementPresent("accountRecoveryLabel"))click("declineRecoveryPassword");
+    }
+
+
+
 }

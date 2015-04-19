@@ -10,7 +10,9 @@ import testTask.util.WebElementsParser;
 
 import java.io.File;
 import java.util.HashMap;
+import java.util.List;
 import java.util.Map;
+import java.util.concurrent.TimeUnit;
 
 public class BasePage {
 
@@ -33,6 +35,10 @@ public class BasePage {
 
     protected WebElement getElement(String elementName){
         return driver.findElement(getFindElementOption(this.webElements.get(elementName)));
+    }
+
+    protected List<WebElement> getElements(String elementName){
+        return driver.findElements(getFindElementOption(this.webElements.get(elementName)));
     }
 
     private By getFindElementOption(String[] locatorData){
@@ -151,12 +157,11 @@ public class BasePage {
 //    /*
 //     * Input fields and textareas
 //     */
-//    protected void type(String message, String value, String elementName, Object... args) {
-//        Reporter.log(message);
-//        WebElement inputElement = this.getElement(elementName, args);
-//        inputElement.clear();
-//        inputElement.sendKeys(value);
-//    }
+    protected void type(String value, String elementName) {
+        WebElement inputElement = this.getElement(elementName);
+        inputElement.clear();
+        inputElement.sendKeys(value);
+    }
 //
 //    protected void typeWithJS(String message, String value, String xpathElementName, Object... args) {
 //        Reporter.log(message);
@@ -196,11 +201,10 @@ public class BasePage {
 //    /*
 //     * Clicks
 //     */
-//    protected void click(String message, String elementName, Object... args) {
-//        Reporter.log(message);
-//        WebElement element = this.getElement(elementName, args);
-//        element.click();
-//    }
+    protected void click(String elementName) {
+        WebElement element = this.getElement(elementName);
+        element.click();
+    }
 //
 //    protected void clickByXpathWithJS(String message, String elementName, Object... args) {
 //        Reporter.log(message);
@@ -223,20 +227,20 @@ public class BasePage {
 //    /*
 //     * Count elements
 //     */
-//    protected int getElementsCount(String elementName, Object... args) {
-//        return this.getElementsCountWithWait(0, elementName, args);
-//    }
-//
-//    protected int getElementsCountWithWait(int waitInSeconds, String elementName, Object... args) {
-//        driver.manage().timeouts().implicitlyWait(waitInSeconds, TimeUnit.SECONDS);
-//        int size =  this.getElements(elementName, args).size();
-//        driver.manage().timeouts().implicitlyWait(Constants.ELEMENT_TIMEOUT_SECONDS, TimeUnit.SECONDS);
-//        return size;
-//    }
-//
-//    protected boolean isElementPresent(String elementName, Object... args) {
-//        return (this.getElementsCount(elementName, args) > 0);
-//    }
+    protected int getElementsCount(String elementName) {
+        return this.getElementsCountWithWait(0, elementName);
+    }
+
+    protected int getElementsCountWithWait(int waitInSeconds, String elementName) {
+        driver.manage().timeouts().implicitlyWait(waitInSeconds, TimeUnit.SECONDS);
+        int size =  this.getElements(elementName).size();
+        driver.manage().timeouts().implicitlyWait(Constants.DEFAULT_WAIT_TIMEOUT, TimeUnit.SECONDS);
+        return size;
+    }
+
+    protected boolean isElementPresent(String elementName, Object... args) {
+        return (this.getElementsCount(elementName) > 0);
+    }
 //
 //    protected boolean isElementPresentWithWait(int waitInSeconds, String elementName, Object... args) {
 //        return (this.getElementsCountWithWait(waitInSeconds, elementName, args) > 0);
