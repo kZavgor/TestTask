@@ -4,7 +4,13 @@
 
     <test name="Check attachments cannot be sent in case of size more than 25 mb">
         <classes>
-            <class name="testTask.tests.Test_test"/>
+            <class name="testTask.tests.OversizeAttachmentCannotSentTest"/>
+        </classes>
+    </test>
+
+    <test name="Check user can open included link">
+        <classes>
+            <class name="testTask.tests.CheckIncludedLInkToMailTest"/>
         </classes>
     </test>
 </suite>

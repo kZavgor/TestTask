@@ -1,0 +1,5 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<Elements>
+    <WebElement name="pageLabel" type="css">table[role="presentation"] h2</WebElement>
+    <WebElement name="mailLink" type="xpath">//a[text()="%s"]</WebElement>
+</Elements>

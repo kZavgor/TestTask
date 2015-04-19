@@ -3,6 +3,7 @@ package testTask.base;
 import org.openqa.selenium.WebDriver;
 import org.openqa.selenium.chrome.ChromeDriver;
 import org.testng.annotations.*;
+import testTask.controls.Actions;
 import testTask.controls.Pages;
 
 import java.io.File;
@@ -21,6 +22,7 @@ public class BaseTest {
         driver.manage().timeouts().implicitlyWait(Constants.DEFAULT_WAIT_TIMEOUT, TimeUnit.SECONDS);
 
         Pages.setupPages();
+        Actions.setupActions();
     }
 
     @AfterClass(alwaysRun = true)
